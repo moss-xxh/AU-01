@@ -143,8 +143,8 @@
                 <div class="vpp-brand-group">
                     <img :src="logoPath" alt="VPP" class="logo">
                     <div class="vpp-text-group">
-                        <h1 class="vpp-title" data-i18n="vppTitle" ref="vppTitleRef">Australia Energy Storage</h1>
-                        <p class="vpp-subtitle" data-i18n="vppSubtitle" ref="vppSubtitleRef">Australia's Clean Energy Storage Solution</p>
+                        <h1 class="vpp-title" >{{ t.vppTitle }}</h1>
+                        <p class="vpp-subtitle" >{{ t.vppSubtitle }}</p>
                     </div>
                 </div>
             </div>
@@ -155,20 +155,19 @@
                 <div class="auth-container">
                     <!-- Login Form -->
                     <div v-show="currentForm === 'login'" id="loginForm" class="auth-section active">
-                        <h2 class="auth-title" data-i18n="signIn">Sign In</h2>
+                        <h2 class="auth-title" >{{ t.signIn }}</h2>
                         
                         <form @submit.prevent="handleLogin" class="auth-form">
                             <div class="form-group">
                                 <label class="form-label">
-                                    <span class="label-text" data-i18n="username">Username/Email</span>
+                                    <span class="label-text" >{{ t.username }}</span>
                                     <span class="required">*</span>
                                 </label>
                                 <input 
                                     v-model="loginForm.email" 
                                     type="text" 
                                     id="loginEmail" 
-                                    placeholder="Please enter username/email"
-                                    data-i18n-placeholder="usernamePlaceholder"
+                                    :placeholder="t.usernamePlaceholder"
                                     required 
                                     value="admin@xuheng.com"
                                 >
@@ -176,15 +175,14 @@
                             
                             <div class="form-group">
                                 <label class="form-label">
-                                    <span class="label-text" data-i18n="password">Password</span>
+                                    <span class="label-text" >{{ t.password }}</span>
                                     <span class="required">*</span>
                                 </label>
                                 <input 
                                     v-model="loginForm.password" 
                                     type="password" 
                                     id="loginPassword" 
-                                    placeholder="Please enter password"
-                                    data-i18n-placeholder="passwordPlaceholder"
+                                    :placeholder="t.passwordPlaceholder"
                                     required 
                                     value="xuheng123"
                                 >
@@ -193,86 +191,82 @@
                             <!-- Math Captcha (disabled) -->
                             <div class="form-group" style="display: none;">
                                 <label class="form-label">
-                                    <span class="label-text" data-i18n="captcha">Verification Code</span>
+                                    <span class="label-text" >{{ t.captcha }}</span>
                                     <span class="required">*</span>
                                 </label>
                                 <div class="captcha-container">
-                                    <input type="text" id="loginCaptchaAnswer" class="captcha-input" placeholder="Answer" data-i18n-placeholder="captchaPlaceholder">
+                                    <input type="text" id="loginCaptchaAnswer" class="captcha-input" :placeholder="t.captchaPlaceholder">
                                     <div class="captcha-question" id="loginCaptchaQuestion" title="Click to refresh"></div>
                                 </div>
                             </div>
                             
                             <div class="form-links">
-                                <a href="#" @click.prevent="switchForm('forgot')" class="link" id="forgotLink" data-i18n="forgotPassword">Forgot password?</a>
-                                <a href="#" @click.prevent="switchForm('register')" class="link" id="registerLink" data-i18n="userRegister">User register</a>
+                                <a href="#" @click.prevent="switchForm('forgot')" class="link" id="forgotLink" >{{ t.forgotPassword }}</a>
+                                <a href="#" @click.prevent="switchForm('register')" class="link" id="registerLink" >{{ t.userRegister }}</a>
                             </div>
                             
-                            <button type="submit" class="submit-btn" data-i18n="submitLogin">Login</button>
+                            <button type="submit" class="submit-btn" >{{ t.submitLogin }}</button>
                         </form>
                         
                     </div>
 
                     <!-- Register Form -->
                     <div v-show="currentForm === 'register'" id="registerForm" class="auth-section">
-                        <h2 class="auth-title" data-i18n="createAccount">Create Account</h2>
+                        <h2 class="auth-title" >{{ t.createAccount }}</h2>
                         
                         <form @submit.prevent="handleRegister" class="auth-form">
                             <div class="form-group">
                                 <label class="form-label">
-                                    <span class="label-text" data-i18n="account">Account</span>
+                                    <span class="label-text" >{{ t.account }}</span>
                                     <span class="required">*</span>
                                 </label>
                                 <input 
                                     v-model="registerForm.account" 
                                     type="text" 
                                     id="registerAccount" 
-                                    placeholder="Please enter account"
-                                    data-i18n-placeholder="accountPlaceholder"
+                                    :placeholder="t.accountPlaceholder"
                                     required
                                 >
                             </div>
                             
                             <div class="form-group">
                                 <label class="form-label">
-                                    <span class="label-text" data-i18n="email">Email</span>
+                                    <span class="label-text" >{{ t.email }}</span>
                                     <span class="required">*</span>
                                 </label>
                                 <input 
                                     v-model="registerForm.email" 
                                     type="email" 
                                     id="registerEmail" 
-                                    placeholder="Please enter email"
-                                    data-i18n-placeholder="emailPlaceholder"
+                                    :placeholder="t.emailPlaceholder"
                                     required
                                 >
                             </div>
                             
                             <div class="form-group">
                                 <label class="form-label">
-                                    <span class="label-text" data-i18n="password">Password</span>
+                                    <span class="label-text" >{{ t.password }}</span>
                                     <span class="required">*</span>
                                 </label>
                                 <input 
                                     v-model="registerForm.password" 
                                     type="password" 
                                     id="registerPassword" 
-                                    placeholder="Please enter password"
-                                    data-i18n-placeholder="passwordPlaceholder"
+                                    :placeholder="t.passwordPlaceholder"
                                     required
                                 >
                             </div>
                             
                             <div class="form-group">
                                 <label class="form-label">
-                                    <span class="label-text" data-i18n="confirmPassword">Confirm Password</span>
+                                    <span class="label-text" >{{ t.confirmPassword }}</span>
                                     <span class="required">*</span>
                                 </label>
                                 <input 
                                     v-model="registerForm.confirmPassword" 
                                     type="password" 
                                     id="confirmPassword" 
-                                    placeholder="Please confirm password"
-                                    data-i18n-placeholder="confirmPasswordPlaceholder"
+                                    :placeholder="t.confirmPasswordPlaceholder"
                                     required
                                 >
                             </div>
@@ -280,20 +274,20 @@
                             <!-- Math Captcha -->
                             <div class="form-group">
                                 <label class="form-label">
-                                    <span class="label-text" data-i18n="captcha">Verification Code</span>
+                                    <span class="label-text" >{{ t.captcha }}</span>
                                     <span class="required">*</span>
                                 </label>
                                 <div class="captcha-container">
-                                    <input type="text" id="registerCaptchaAnswer" class="captcha-input" placeholder="Answer" data-i18n-placeholder="captchaPlaceholder" required>
+                                    <input type="text" id="registerCaptchaAnswer" class="captcha-input" :placeholder="t.captchaPlaceholder" required>
                                     <div class="captcha-question" id="registerCaptchaQuestion" title="Click to refresh"></div>
                                 </div>
                             </div>
                             
                             <div class="form-links">
-                                <a href="#" @click.prevent="switchForm('login')" class="link back-to-login" data-i18n="backToLogin">Back to login</a>
+                                <a href="#" @click.prevent="switchForm('login')" class="link back-to-login" >{{ t.backToLogin }}</a>
                             </div>
                             
-                            <button type="submit" class="submit-btn" data-i18n="submitRegister">Submit</button>
+                            <button type="submit" class="submit-btn" >{{ t.submitRegister }}</button>
                         </form>
                     </div>
 
@@ -304,15 +298,14 @@
                         <form @submit.prevent="handleForgotPassword" class="auth-form">
                             <div class="form-group">
                                 <label class="form-label">
-                                    <span class="label-text" data-i18n="email">Email</span>
+                                    <span class="label-text" >{{ t.email }}</span>
                                     <span class="required">*</span>
                                 </label>
                                 <input 
                                     v-model="forgotForm.email" 
                                     type="email" 
                                     id="resetEmail" 
-                                    placeholder="Please enter registered email"
-                                    data-i18n-placeholder="emailPlaceholder"
+                                    :placeholder="t.emailPlaceholder"
                                     required
                                 >
                             </div>
@@ -320,20 +313,20 @@
                             <!-- Math Captcha -->
                             <div class="form-group">
                                 <label class="form-label">
-                                    <span class="label-text" data-i18n="captcha">Verification Code</span>
+                                    <span class="label-text" >{{ t.captcha }}</span>
                                     <span class="required">*</span>
                                 </label>
                                 <div class="captcha-container">
-                                    <input type="text" id="forgotCaptchaAnswer" class="captcha-input" placeholder="Answer" data-i18n-placeholder="captchaPlaceholder" required>
+                                    <input type="text" id="forgotCaptchaAnswer" class="captcha-input" :placeholder="t.captchaPlaceholder" required>
                                     <div class="captcha-question" id="forgotCaptchaQuestion" title="Click to refresh"></div>
                                 </div>
                             </div>
                             
                             <div class="form-links">
-                                <a href="#" @click.prevent="switchForm('login')" class="link back-to-login" data-i18n="backToLogin">Back to login</a>
+                                <a href="#" @click.prevent="switchForm('login')" class="link back-to-login" >{{ t.backToLogin }}</a>
                             </div>
                             
-                            <button type="submit" class="submit-btn" data-i18n="sendResetLink">Send Reset Link</button>
+                            <button type="submit" class="submit-btn" >{{ t.sendResetLink }}</button>
                         </form>
                     </div>
                 </div>
@@ -344,66 +337,42 @@
     <!-- Footer -->
     <div class="footer">
         <div class="footer-content">
-            <span data-i18n="companyInfo">系统版权所有者：旭衡电子（深圳）有限公司</span>
+            <span >{{ t.companyInfo }}</span>
             <span class="separator">|</span>
-            <span data-i18n="contactPhone">网站备案信息：粤ICP备2021169764号</span>
+            <span >{{ t.contactPhone }}</span>
             <span class="separator">|</span>
-            <span data-i18n="recordNumber">联系方式：xuheng@alwayscontrol.com.cn</span>
+            <span >{{ t.recordNumber }}</span>
         </div>
     </div>
 </template>
 
 <script setup lang="ts">
-import { ref, reactive, onMounted, computed, nextTick } from 'vue'
+import { ref, reactive, computed } from 'vue'
 import { useRouter } from 'vue-router'
 import { useAuthStore } from '@/stores/authStore'
 
-// 响应式数据
-let currentLang = ref('en')
-const currentForm = ref('login')
 const router = useRouter()
 const authStore = useAuthStore()
 
+// 语言切换
+const currentLang = ref<'en' | 'zh'>('en')
+
+// 当前表单
+const currentForm = ref('login')
+
 // Logo路径
-const logoPath = computed(() => {
-    return '/v3/' + 'logo.png'
-})
+const logoPath = computed(() => '/v3/logo.png')
 
-// DOM引用
-const vppTitleRef = ref<HTMLElement>()
-const vppSubtitleRef = ref<HTMLElement>()
-
-// 表单数据
-const loginForm = reactive({
-    email: 'admin@xuheng.com',
-    password: 'xuheng123'
-})
-
-const registerForm = reactive({
-    account: '',
-    email: '',
-    password: '',
-    confirmPassword: ''
-})
-
-const forgotForm = reactive({
-    email: ''
-})
-
-// 完全复制原版翻译内容
+// 翻译数据
 const translations = {
     en: {
-        // VPP Content
         vppTitle: "Australia Energy Storage",
         vppSubtitle: "Australia's Clean Energy Storage Solution",
-        // Auth Content
         signIn: "Sign In",
         createAccount: "Create Account",
-        userLogin: "User Login",
         userRegister: "User Register",
         username: "Username/Email",
         password: "Password",
-        nickname: "Nickname",
         account: "Account",
         email: "Email",
         confirmPassword: "Confirm Password",
@@ -425,17 +394,13 @@ const translations = {
         loginSuccess: "Login successful!"
     },
     zh: {
-        // VPP Content
         vppTitle: "澳洲储能电站",
         vppSubtitle: "澳洲清洁能源储存解决方案",
-        // Auth Content
         signIn: "登录",
         createAccount: "创建账户",
-        userLogin: "用户登录",
         userRegister: "用户注册",
         username: "用户名/邮箱",
         password: "密码",
-        nickname: "昵称",
         account: "账号",
         email: "邮箱",
         confirmPassword: "确认密码",
@@ -458,34 +423,29 @@ const translations = {
     }
 }
 
-// 原版JavaScript的翻译函数
-function updateTranslations() {
-    const lang = currentLang.value
-    const elements = document.querySelectorAll('[data-i18n]')
-    
-    elements.forEach(element => {
-        const key = element.getAttribute('data-i18n')
-        if (key && translations[lang] && translations[lang][key]) {
-            element.textContent = translations[lang][key]
-        }
-    })
-    
-    // 处理placeholder
-    const placeholderElements = document.querySelectorAll('[data-i18n-placeholder]')
-    placeholderElements.forEach(element => {
-        const key = element.getAttribute('data-i18n-placeholder')
-        if (key && translations[lang] && translations[lang][key]) {
-            element.setAttribute('placeholder', translations[lang][key])
-        }
-    })
-}
+// 计算属性：当前语言的翻译（Vue响应式，不再操作DOM）
+const t = computed(() => translations[currentLang.value])
+
+// 表单数据
+const loginForm = reactive({
+    email: 'admin@xuheng.com',
+    password: 'xuheng123'
+})
+
+const registerForm = reactive({
+    account: '',
+    email: '',
+    password: '',
+    confirmPassword: ''
+})
+
+const forgotForm = reactive({
+    email: ''
+})
 
 // 切换语言
 const toggleLanguage = () => {
     currentLang.value = currentLang.value === 'en' ? 'zh' : 'en'
-    nextTick(() => {
-        updateTranslations()
-    })
 }
 
 // 切换表单
@@ -493,32 +453,21 @@ const switchForm = (formName: string) => {
     currentForm.value = formName
 }
 
-// 登录处理
+// 登录 → 真实路由跳转
 const handleLogin = () => {
     authStore.login(loginForm.email)
-    console.log('Login successful, redirecting to role-select page')
+    router.push('/home')
 }
 
-// 注册处理
+// 注册
 const handleRegister = () => {
-    console.log('Registration successful!')
     setTimeout(() => switchForm('login'), 2000)
 }
 
-// 忘记密码处理
+// 忘记密码
 const handleForgotPassword = () => {
-    console.log('Reset link sent to your email.')
     setTimeout(() => switchForm('login'), 3000)
 }
-
-// 初始化
-onMounted(() => {
-    authStore.initFromLocalStorage()
-    // 初始化翻译
-    nextTick(() => {
-        updateTranslations()
-    })
-})
 </script>
 
 <!-- 原版CSS样式 - 1:1还原v2 -->
